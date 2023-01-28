@@ -18,9 +18,9 @@ public class MainActivity2 extends AppCompatActivity {
 
         RecyclerView rc=findViewById(R.id.recyclerView);
 
-        DBHelper dbHelpe=new DBHelper(this);
+        DBHelper dbHelper=new DBHelper(this);
 
-        ArrayList<Student> list=dbHelpe.getAllStudent();
+        ArrayList<Student> list=dbHelper.getAllStudent();
         StudentAdapter adapters=new StudentAdapter(list,this)   ;
         rc.setAdapter(adapters);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);

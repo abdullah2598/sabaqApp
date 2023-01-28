@@ -20,15 +20,15 @@ public class AddStudent extends AppCompatActivity {
         Button addStudent=findViewById(R.id.addStudentToList);
         DBHelper d=new DBHelper(this);
 
+
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 String name=txt1.getText().toString();
                 String age=txt2.getText().toString();
-
-                Boolean b=d.insertStd("adnan","12");
-                //if(b)
+                Boolean b=d.insertStd(name,age);
+                if(b)
                 {
                     Toast.makeText(AddStudent.this, age.toString(), Toast.LENGTH_SHORT).show();
                 }

@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
@@ -14,27 +14,27 @@ public class DBHelper extends SQLiteOpenHelper
 {
 
     public DBHelper(Context context ) {
-        super(context, "sabaq.db", null, 1);
+        super(context, "Sabaq.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        db.execSQL("create Table StudentRecord"+
-//                "(id int primary key autoincrement," +
-//                "stdname Text," +
-//                "parano Text," +
-//                "ayats Text," +
-//                "ayate Text," +
-//                "lastsabaq Text," +
-//                "manzil Text)"
-//        );
 
-        db.execSQL("create Table std"+
-                "(id int primary key autoincrement," +
+       String tbl1= "create Table std"+
+                "(id int primary key," +
                 "name Text," +
-                "age Text)"
-        );
+                "age Text)";
+        db.execSQL(tbl1);
 
+        db.execSQL("create Table StudentRecord"+
+                "(id int primary key autoincrement," +
+                "stdname Text," +
+                "parano Text," +
+                "ayats Text," +
+                "ayate Text," +
+                "lastsabaq Text," +
+                "manzil Text)"
+        );
     }
 
     @Override
