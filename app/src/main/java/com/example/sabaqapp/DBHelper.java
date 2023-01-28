@@ -33,35 +33,37 @@ public class DBHelper extends SQLiteOpenHelper
                 "ayats Text," +
                 "ayate Text," +
                 "lastsabaq Text," +
+                "date Text," +
                 "manzil Text)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        //db.execSQL("DROP Table if exists StudentRecord");
+        db.execSQL("DROP Table if exists StudentRecord");
         db.execSQL("DROP Table if exists std");
     }
 
-//    public boolean insert(String stdname,String parano,String ayats,String ayate,String lastsabaq,String manzil) {
-//        SQLiteDatabase mydb = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("stdname", stdname);
-//        contentValues.put("parano", parano);
-//        contentValues.put("ayats", ayats);
-//        contentValues.put("ayate", ayate);
-//        contentValues.put("lastsabaq", lastsabaq);
-//        contentValues.put("manzil", manzil);
-//        long result = mydb.insert("StudentRecord", null, contentValues);
-//
-//        mydb.close();
-//        if(result==-1)
-//        {
-//            return  false;
-//        }
-//        return true;
-//
-//    }
+    public boolean insert(String stdname,String parano,String ayats,String ayate,String lastsabaq,String manzil,String date) {
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("stdname", stdname);
+        contentValues.put("parano", parano);
+        contentValues.put("ayats", ayats);
+        contentValues.put("ayate", ayate);
+        contentValues.put("lastsabaq", lastsabaq);
+        contentValues.put("manzil", manzil);
+        contentValues.put("date", date);
+        long result = mydb.insert("StudentRecord", null, contentValues);
+
+        mydb.close();
+        if(result==-1)
+        {
+            return  false;
+        }
+        return true;
+
+    }
 
     public boolean insertStd(String name,String age) {
         SQLiteDatabase mydb = this.getWritableDatabase();
