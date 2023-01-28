@@ -2,19 +2,17 @@ package com.example.sabaqapp;
 
 public class Student
 {
-    int id;
+
     String name;
     String age;
 
-    public Student(int id, String name, String age) {
-        this.id = id;
+    public Student( String name, String age) {
+
         this.name = name;
         this.age = age;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public String getName() {
         return name;
@@ -24,9 +22,7 @@ public class Student
         return age;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public void setName(String name) {
         this.name = name;
