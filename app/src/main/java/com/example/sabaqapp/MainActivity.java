@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         addstd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent inten=new Intent(MainActivity.this,AddStudent.class);
+                startActivity(inten);
             }
         });
 
