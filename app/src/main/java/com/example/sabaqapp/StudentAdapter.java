@@ -27,7 +27,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.viewHold
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.activity_main2,parent,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.studentlayout,parent,false);
         return new viewHolder(view);
     }
 
@@ -52,7 +52,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.viewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {

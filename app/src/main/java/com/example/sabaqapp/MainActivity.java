@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         allStd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent inten=new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(inten);
             }
         });
         stdHistory.setOnClickListener(new View.OnClickListener() {

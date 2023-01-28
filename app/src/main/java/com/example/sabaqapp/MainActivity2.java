@@ -17,8 +17,10 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         RecyclerView rc=findViewById(R.id.recyclerView);
-        StudentArray arr=new StudentArray();
-        ArrayList<Student> list=arr.getAllStd();
+
+        DBHelper dbHelpe=new DBHelper(this);
+
+        ArrayList<Student> list=dbHelpe.getAllStudent();
         StudentAdapter adapters=new StudentAdapter(list,this)   ;
         rc.setAdapter(adapters);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);

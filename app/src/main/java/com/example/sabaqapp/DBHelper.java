@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,40 +19,89 @@ public class DBHelper extends SQLiteOpenHelper
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table StudentRecord"+
+//        db.execSQL("create Table StudentRecord"+
+//                "(id int primary key autoincrement," +
+//                "stdname Text," +
+//                "parano Text," +
+//                "ayats Text," +
+//                "ayate Text," +
+//                "lastsabaq Text," +
+//                "manzil Text)"
+//        );
+
+        db.execSQL("create Table std"+
                 "(id int primary key autoincrement," +
-                "stdname Text," +
-                "parano Text," +
-                "ayats Text," +
-                "ayate Text," +
-                "lastsabaq Text," +
-                "manzil Text)"
+                "name Text," +
+                "age Text)"
         );
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP Table if exists StudentRecord");
+        //db.execSQL("DROP Table if exists StudentRecord");
+        db.execSQL("DROP Table if exists std");
     }
 
-    public boolean insert(String stdname,String parano,String ayats,String ayate,String lastsabaq,String manzil) {
+//    public boolean insert(String stdname,String parano,String ayats,String ayate,String lastsabaq,String manzil) {
+//        SQLiteDatabase mydb = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("stdname", stdname);
+//        contentValues.put("parano", parano);
+//        contentValues.put("ayats", ayats);
+//        contentValues.put("ayate", ayate);
+//        contentValues.put("lastsabaq", lastsabaq);
+//        contentValues.put("manzil", manzil);
+//        long result = mydb.insert("StudentRecord", null, contentValues);
+//
+//        mydb.close();
+//        if(result==-1)
+//        {
+//            return  false;
+//        }
+//        return true;
+//
+//    }
+
+    public boolean insertStd(String name,String age) {
         SQLiteDatabase mydb = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("stdname", stdname);
-        contentValues.put("parano", parano);
-        contentValues.put("ayats", ayats);
-        contentValues.put("ayate", ayate);
-        contentValues.put("lastsabaq", lastsabaq);
-        contentValues.put("manzil", manzil);
-        long result = mydb.insert("StudentRecord", null, contentValues);
+        contentValues.put("name", name);
+        contentValues.put("age", age);
+        long result = mydb.insert("std", null, contentValues);
+
         mydb.close();
         if(result==-1)
         {
-            return  false;
+            return false;
         }
         return true;
 
     }
+
+
+    public ArrayList<Student> getAllStudent()
+    {
+        ArrayList<Student> list=new ArrayList<>();
+        SQLiteDatabase mydb=this.getWritableDatabase();
+        Cursor cursor=mydb.rawQuery("select name,age from std",null);
+        if(cursor.moveToFirst())
+        {
+            while(cursor.moveToNext())
+            {
+                Student  q=new Student();
+                q.setName(cursor.getString(0));
+                q.setAge(cursor.getString(1));
+                list.add(q);
+            }
+        }
+        cursor.close();
+        mydb.close();
+        return list;
+    }
+
+
+
 
     // std record will be returned form here
 //    public ArrayList<Student> getAllData()
