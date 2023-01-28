@@ -10,4 +10,9 @@ public class StudentArray
     {
         stdArray.add(s);
     }
+
+    public  ArrayList<Student> getAllStd()
+    {
+        return  stdArray;
+    }
 }

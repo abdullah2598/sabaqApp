@@ -1,8 +1,12 @@
 package com.example.sabaqapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -12,6 +16,12 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
+        RecyclerView rc=findViewById(R.id.recyclerView);
+        StudentArray arr=new StudentArray();
+        ArrayList<Student> list=arr.getAllStd();
+        StudentAdapter adapters=new StudentAdapter(list,this)   ;
+        rc.setAdapter(adapters);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        rc.setLayoutManager(layoutManager);
     }
 }

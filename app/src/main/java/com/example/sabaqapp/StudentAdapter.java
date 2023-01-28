@@ -1,6 +1,8 @@
 package com.example.sabaqapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,12 +27,27 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.viewHold
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view= LayoutInflater.from(context).inflate(R.layout.activity_main2,parent,false);
+        return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+        Student model=list.get(position);
+        holder.name.setText(model.getName());
+        holder.age.setText(model.getAge());
 
+        // us pory item pe kahi pe click karo to ye onclick khul jay ga
+        // pory 1 cardview pe click karo kahi b to new activity pe chalay jain gay
+        holder.btnaddRec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                //Intent intent=new Intent(context,DetailActivity.class);
+                //intent.putExtra("name",model.getName());
+               // context.startActivity(intent);
+            }
+        });
     }
 
     @Override
