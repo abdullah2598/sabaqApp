@@ -13,37 +13,37 @@ public class DBHelper extends SQLiteOpenHelper
 {
 
     public DBHelper(Context context ) {
-        super(context, "Quiz.db", null, 1);
+        super(context, "sabaq.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table questionPaper"+
+        db.execSQL("create Table StudentRecord"+
                 "(id int primary key autoincrement," +
-                "question Text," +
-                "answer1 Text," +
-                "answer2 Text," +
-                "answer3 Text," +
-                "answer4 Text," +
-                "correctAnswer Text)"
+                "stdname Text," +
+                "parano Text," +
+                "ayats Text," +
+                "ayate Text," +
+                "lastsabaq Text," +
+                "manzil Text)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP Table if exists questionPaper");
+        db.execSQL("DROP Table if exists StudentRecord");
     }
 
-    public boolean insert(String question,String answer1,String answer2,String answer3,String answer4,String correctAnswer) {
+    public boolean insert(String stdname,String parano,String ayats,String ayate,String lastsabaq,String manzil) {
         SQLiteDatabase mydb = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("question", question);
-        contentValues.put("answer1", answer1);
-        contentValues.put("answer2", answer2);
-        contentValues.put("answer3", answer3);
-        contentValues.put("answer4", answer4);
-        contentValues.put("correctAnswer", correctAnswer);
-        long result = mydb.insert("questionPaper", null, contentValues);
+        contentValues.put("stdname", stdname);
+        contentValues.put("parano", parano);
+        contentValues.put("ayats", ayats);
+        contentValues.put("ayate", ayate);
+        contentValues.put("lastsabaq", lastsabaq);
+        contentValues.put("manzil", manzil);
+        long result = mydb.insert("StudentRecord", null, contentValues);
         mydb.close();
         if(result==-1)
         {
