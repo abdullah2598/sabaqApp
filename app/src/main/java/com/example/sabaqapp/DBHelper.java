@@ -104,35 +104,33 @@ public class DBHelper extends SQLiteOpenHelper
         return list;
     }
 
+    public ArrayList<StudentRecord> getAllData()
+    {
+        ArrayList<StudentRecord> list=new ArrayList<>();
+        SQLiteDatabase mydb=this.getWritableDatabase();
+        Cursor cursor=mydb.rawQuery("select stdname,parano,ayats,ayate,lastsabaq,manzil,date from studentrecord",null);
+        if(cursor.moveToFirst())
+        {
+            while(cursor.moveToNext())
+            {
+                StudentRecord  q=new StudentRecord();
+                q.setName(cursor.getString(0));
+                q.setParano(cursor.getString(1));
+                q.setAyats(cursor.getString(2));
+                q.setAyate(cursor.getString(3));
+
+                q.setLastSabaq(cursor.getString(4));
+                q.setManzil(cursor.getString(5));
+                q.setDate(cursor.getString(6));
 
 
+                list.add(q);
+            }
+        }
+        cursor.close();
+        mydb.close();
+        return list;
+    }
 
-    // std record will be returned form here
-//    public ArrayList<Student> getAllData()
-//    {
-//        ArrayList<Student> list=new ArrayList<>();
-//        SQLiteDatabase mydb=this.getWritableDatabase()  ;
-//        Cursor cursor=mydb.rawQuery("select question,answer1,answer2,answer3,answer4,correctAnswer from questionPaper",null);
-//        if(cursor.moveToFirst())
-//        {
-//            while(cursor.moveToNext())
-//            {
-//                QuestionClass q=new QuestionClass();
-//                q.setQuestionvalue(cursor.getString(0));
-//                q.setOption1(cursor.getString(1));
-//                q.setOption2(cursor.getString(2));
-//                q.setOption3(cursor.getString(3));
-//                q.setOption4(cursor.getString(4));
-//                q.setCorrectOption(cursor.getString(5));
-//
-//                list.add(q);
-//            }
-//
-//
-//        }
-//        cursor.close();
-//        mydb.close();
-//        return list;
-//    }
 
 }
