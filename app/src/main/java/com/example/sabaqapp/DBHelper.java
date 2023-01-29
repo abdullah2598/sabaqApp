@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper
 {
 
     public DBHelper(Context context ) {
-        super(context, "Sabaq.db", null, 1);
+        super(context, "Sabaq1.db", null, 1);
     }
 
     @Override
@@ -26,21 +26,22 @@ public class DBHelper extends SQLiteOpenHelper
                 "age Text)";
         db.execSQL(tbl1);
 
-        db.execSQL("create Table StudentRecord"+
-                "(id int primary key autoincrement," +
+       String table2="create Table studentrecord"+
+                "(id int primary key," +
                 "stdname Text," +
                 "parano Text," +
                 "ayats Text," +
                 "ayate Text," +
                 "lastsabaq Text," +
                 "date Text," +
-                "manzil Text)"
-        );
+                "manzil Text)";
+
+       db.execSQL(table2);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP Table if exists StudentRecord");
+        db.execSQL("DROP Table if exists studentrecord");
         db.execSQL("DROP Table if exists std");
     }
 
@@ -52,9 +53,10 @@ public class DBHelper extends SQLiteOpenHelper
         contentValues.put("ayats", ayats);
         contentValues.put("ayate", ayate);
         contentValues.put("lastsabaq", lastsabaq);
-        contentValues.put("manzil", manzil);
         contentValues.put("date", date);
-        long result = mydb.insert("StudentRecord", null, contentValues);
+        contentValues.put("manzil", manzil);
+
+        long result = mydb.insert("studentrecord", null, contentValues);
 
         mydb.close();
         if(result==-1)
