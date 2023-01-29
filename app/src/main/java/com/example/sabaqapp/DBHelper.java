@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 import java.util.ArrayList;
@@ -122,7 +123,7 @@ public class DBHelper extends SQLiteOpenHelper
                 q.setLastSabaq(cursor.getString(4));
                 q.setManzil(cursor.getString(5));
                 q.setDate(cursor.getString(6));
-
+                
 
                 list.add(q);
             }

@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         stdHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(MainActivity.this,MainActivity4.class);
+                startActivity(intent);
             }
         });
 
